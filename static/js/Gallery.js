@@ -9,8 +9,8 @@ async function fetchStores() {
         }
     }
     const response = await fetch('http://trawl-fki.ostfalia.de/api/store/find?name=b%25&page=0&size=100', config);
-    const images = await response.json();
-    return images;
+    const stores = await response.json();
+    return stores;
 }
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("loadContent").addEventListener("click", async ()=>{
