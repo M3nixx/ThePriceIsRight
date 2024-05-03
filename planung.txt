@@ -1,0 +1,17 @@
+Listenartig Produkte/Artike/Preis anzeigen (für ausgewählte drogerien?)
+    Übersichtseite Store
+    Übersichtseite Product
+    Übersichtseite Item
+    Übersichtseite Company
+    pagination/suche/filter/sortieren
+
+Startseite von wo man auf die Übersichtsseiten kommt
+
+Auf übersichtsseiten soll man auf einzelne elemente klicken können von wo man dann auf die informationsseite zum element kommt
+    informationsseite Store
+    informationsseite Product
+    informationsseite Item
+    informationsseite Company
+
+Kassenbons sollen angezeigt werden und man soll sie erstellen/ändern/löschen können 
+    Kassenbon wird simuliert durch mehrere einkäufe zum gleichen zeitpunkt
