@@ -1,0 +1,44 @@
+@import url("https://api.fonts.coollabs.io/css2?family=Montserrat:ital,wght@0,500;0,900;1,500;1,900&display=swap");
+
+@font-face {
+  font-family: "Blobmoji";
+  src: url("../fonts/Blobmoji.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  font-variant-emoji: emoji;
+}
+
+.blobmoji {
+  line-break: anywhere;
+  font-family:
+    "Blobmoji",
+    /* Blobmoji currently does not work in Firefox.
+     * The developer of the font is already informed. */ 
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji",
+    "EmojiOne Color",
+    "Android Emoji";
+}
+
+a, button {
+  transition: letter-spacing 175ms ease-in-out;
+  cursor: pointer;
+}
+a:hover, a:focus,
+button:hover, button:focus {
+  letter-spacing: 0.1ch;
+}
+a:active, button:active {
+  letter-spacing: -0.032ch;
+}
+a::before { 
+  content: "Link: ";
+  font-size: smaller;
+}
+a::after  { 
+  content: " >>";
+  font-size: larger;
+}

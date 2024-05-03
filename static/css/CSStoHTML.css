@@ -1,0 +1,156 @@
+/* Just a heads up before you start:
+ * You do not need to understand the properties used herein just yet.
+ * You do however need to understand the selectors used herein.
+ * You do not need to write any CSS for Part A and B.
+ * You should tackle these tasks selector by selector,
+ *     part py part as they rely on each other.
+ */
+
+ @import url('https://api.fonts.coollabs.io/css2?family=Montserrat:ital,wght@0,500;0,900;1,500;1,900&display=swap');
+ /* font for menue*/
+ @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+ 
+ /* Part A - easy */
+ 
+ html head+body {
+   background-color:#fefbf7;
+   font-family: Montserrat, sans-serif;
+   font-weight: normal;
+   color: darkslategray;
+   padding: 0;
+   margin: 0;
+ }
+ body > ul {
+   width: 100%;
+   position: relative;
+   top: 0;
+   display: flex;
+   justify-content: center;
+   list-style-type: none;
+   flex-wrap: wrap;
+   background-color: #4c7f7f;
+   z-index: 2;
+   position: sticky;
+   top: 0;
+   margin: 0;
+   padding: 0.6rem 0;
+ }
+ 
+ ul li {
+   margin: 0 1rem;
+ }
+ 
+ ul li a {
+   /* css variable */
+   --fill-color:#faeed9;
+   position: relative;
+   display: block;
+   padding: 4px 0;
+   font: 700 2rem Raleway, sans-serif;
+   text-decoration: none;
+   text-transform: uppercase;
+   -webkit-text-stroke: 2px var(--fill-color);
+   background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+   color: transparent;
+   background-clip: text;
+   transition: 0.5s linear;
+ }
+ 
+ ul li a:hover {
+   background-size: 100%;
+ }
+ ul + div#content>h1#top {
+   font-weight: bold;
+   font-style: italic;
+   font-size: xxx-large;
+ }
+ 
+ h1+p.desc {
+   font-size: larger;
+   font-style: italic;
+ }
+ 
+ p~hr {
+   border-color: darkslategray;
+ }
+ 
+ /* Part B - medium */
+ 
+ p.desc:first-letter {
+   font-weight: bold;
+   font-size: larger;
+   font-style: normal;
+ }
+ 
+ hr~section#inbetween {
+   display: grid;
+   grid-template-areas: "img table" "img text";
+   grid-template-columns: 25rem 1fr;
+   grid-template-rows: 1fr auto;
+   gap: 1ch;
+ }
+ 
+ #inbetween>img[src="https://j2n.eu/r/l411y"][alt~="school" i][alt~="supplies" i] {
+   filter: drop-shadow(0 0 1ch darkslategray);
+   border-radius: 2.5ch;
+   grid-area: img;
+   width: 25rem;
+ }
+ 
+ #inbetween>table {
+   grid-area: table;
+ }
+ 
+ table * {
+   border: darkslategrey solid 2px;
+   border-radius: .64ch;
+ }
+ 
+ table thead tr th,
+ table tbody tr td {
+   padding: 1ch;
+ }
+ 
+ table thead tr th {
+   background-color: darkslategray;
+   color: whitesmoke;
+ }
+ 
+ table tbody tr:nth-child(even) td {
+   background-color: #dbe5e5;
+ }
+ 
+ #inbetween>p {
+   grid-area: text;
+ }
+ 
+ /* Part C - advanced */
+ 
+ #inbetween~hr {
+   /* This just for the to be replicated structure. */
+ }
+ 
+ hr~a[href]#wpl[href="https://j2n.eu/r/LhaxM"].wpl[href^="https" i] {
+   color: darkslateblue;
+   transition: letter-spacing 250ms ease-in-out
+ }
+ 
+ a:hover {
+   letter-spacing: 0.1ch
+ }
+ 
+ a:active {
+   letter-spacing: -0.032ch
+ }
+ 
+ /*
+  * Schreiben Sie hier per CSS vor einen Link ein "Link: " und nach einen Link ein " >>".
+  * Verkleineren Sie Ersteres und vergrößern Sie Zweiteres jeweils relativ.
+  */
+ 
+ /* Tipp: Größeneinstellungen sind auch in dieser Datei zu finden! */
+ 
+ 
+ 
+ 
+ 

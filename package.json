@@ -1,0 +1,12 @@
+{
+  "name": "webprogprojekt",
+  "version": "1.0.0",
+  "description": "Web Prog Projekt",
+  "main": "server.js",
+  "scripts": {
+  },
+  "author": "22",
+  "license": "",
+  "dependencies": {
+  }
+}
