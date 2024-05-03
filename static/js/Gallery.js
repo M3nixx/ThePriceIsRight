@@ -1,6 +1,6 @@
 "use strict";
 
-async function fetchStores() {
+async function fetchStores(page, pagesize) {
     const config = {
         method: 'GET',
         headers: {
@@ -8,14 +8,14 @@ async function fetchStores() {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch('http://trawl-fki.ostfalia.de/api/store/find?name=b%25&page=0&size=100', config);
+    const response = await fetch('http://trawl-fki.ostfalia.de/api/store/find?name=%25&page=' + page + '&size=' + pagesize, config);
     const stores = await response.json();
     return stores;
 }
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("loadContent").addEventListener("click", async ()=>{
         //Ihre Lösung hier
-        console.log(await fetchStores());
+        console.log(await fetchStores(0, 50));
         /*
         const container = document.getElementById("container");
         const images = await fetchImages();
