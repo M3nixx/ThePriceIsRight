@@ -13,9 +13,10 @@ async function fetchStores(page, pagesize) {
     return stores;
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    document.getElementById("loadContent").addEventListener("click", async ()=>{
         //Ihre Lösung hier
         console.log(await fetchStores(0, 50));
+        const stores = await fetchStores(0, 50);
+        displayStoresAsTable(stores);
         /*
         const container = document.getElementById("container");
         const images = await fetchImages();
@@ -30,4 +31,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         */
     });
-});
+
+
+function displayStoresAsTable(stores) {
+    var tbody = document.querySelector('#storeTable tbody');
+  
+    tbody.innerHTML = '';
+
+    stores.content.forEach(function(store) {
+      var row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${store.name}</td>
+        <td>${store.id}</td>
+      `;
+      row.classList.add('highlighted-row');
+      tbody.appendChild(row);
+
+      row.addEventListener('click', function() {
+        window.location.href = 'neueSeite.html?id=' + store.id;
+      });
+    });
+
+}
+
+
