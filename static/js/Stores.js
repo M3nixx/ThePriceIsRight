@@ -48,7 +48,7 @@ function displayStoresAsTable(stores) {
       tbody.appendChild(row);
 
       row.addEventListener('click', function() {
-        window.location.href = 'neueSeite.html?id=' + store.id;
+        window.location.href = 'StoreInfo.html?id=' + store.id;
       });
     });
 

@@ -1,6 +1,6 @@
 "use strict";
 
-async function fetchStores(page, pagesize) {
+async function fetchStoreById(id) {
     const config = {
         method: 'GET',
         headers: {
@@ -8,16 +8,16 @@ async function fetchStores(page, pagesize) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch('http://trawl-fki.ostfalia.de/api/store/find?name=%25&page=' + page + '&size=' + pagesize, config);
-    const stores = await response.json();
-    return stores;
+    const response = await fetch('http://trawl-fki.ostfalia.de/api/store/' + id, config);
+    const store = await response.json();
+    return store;
 }
 
-
 document.addEventListener('DOMContentLoaded', async () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const searchParam = searchParams.get('id');
     const ids = ["name", "description", "id", "contact", "street", "city", "state", "zip", "country", "longitude", "latitude", "company"];
-    const stores = await fetchStores(0, 50);
-    const store = stores.content[0];
+    const store = await fetchStoreById(searchParam);
 
     let i = 0;
 
