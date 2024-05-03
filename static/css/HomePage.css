@@ -1,0 +1,33 @@
+body{
+    background-color: peachpuff;
+    font-family: monospace;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Zentriert die Elemente horizontal */
+    align-items: center; /* Zentriert die Elemente vertikal */
+    height: 100vh; /* Stellt sicher, dass der Container die gesamte Höhe des Viewports einnimmt */
+}
+.button{
+    background-color: white; 
+    font-weight: bold;
+    font-family: monospace;
+    border: 2px solid aqua;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 100px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: aqua;
+}
+#h1{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 300%;
+}
