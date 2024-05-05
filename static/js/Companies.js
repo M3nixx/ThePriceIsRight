@@ -2,7 +2,7 @@
 
 let currentPage = 0;
 
-async function fetchProducts(page, pagesize) {
+async function fetchCompanies(page, pagesize) {
     const config = {
         method: 'GET',
         headers: {
@@ -10,47 +10,47 @@ async function fetchProducts(page, pagesize) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch('http://trawl-fki.ostfalia.de/api/product/find?name=%25&page=' + page + '&size=' + pagesize, config);
-    const products = await response.json();
-    return products;
+    const response = await fetch('http://trawl-fki.ostfalia.de/api/company/find?name=%25&page=' + page + '&size=' + pagesize, config);
+    const companies = await response.json();
+    return companies;
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log(await fetchProducts(0, 30));
-    const products = await fetchProducts(0, 30);
-    displayProductsAsTable(await fetchProducts(currentPage, 30));
+    console.log(await fetchCompanies(0, 30));
+    const companies = await fetchCompanies(0, 30);
+    displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
     updatePaginationLabel();
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
-            displayProductsAsTable(await fetchProducts(currentPage, 30));
+            displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
             updatePaginationLabel();
         }
     });
 
     document.getElementById("next").addEventListener("click", async () => {
-        if (currentPage < products.info.totalPages - 1) {
+        if (currentPage < company.info.totalPages - 1) {
             currentPage++;
-            displayProductsAsTable(await fetchProducts(currentPage, 30));
+            displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
             updatePaginationLabel();
         }
     });
 });
 
-function displayProductsAsTable(products) {
-    var tbody = document.querySelector('#productTable tbody');
+function displayCompaniesAsTable(companies) {
+    var tbody = document.querySelector('#companyTable tbody');
     tbody.innerHTML = '';
-    products.content.forEach(function (product) {
+    companies.content.forEach(function (company) {
         var row = document.createElement('tr');
         row.innerHTML = `
-             <td>${product.name}</td>
-             <td>${product.id}</td>
+             <td>${company.name}</td>
+             <td>${company.gln}</td>
          `;
         row.classList.add('highlighted-row');
         tbody.appendChild(row);
 
         row.addEventListener('click', function () {
-            window.location.href = 'ProductInfo.html?id=' + product.id;
+            window.location.href = 'CompanyInfo.html?gln=' + company.gln;
         });
     });
 }
