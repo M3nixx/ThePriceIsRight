@@ -57,3 +57,6 @@
   #storeTable td {
     width: 330;
   }
+  label#PageNumber{
+    background-color: #FFF;
+  }
