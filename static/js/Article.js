@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     document.getElementById("next").addEventListener("click", async () => {
-        if (currentPage < article.info.totalPages - 1) {
+        if (currentPage < articles.info.totalPages - 1) {
             currentPage++;
             displayArticlesAsTable(await fetchArticles(currentPage, 30));
             updatePaginationLabel();
