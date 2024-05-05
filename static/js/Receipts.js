@@ -1,5 +1,8 @@
 "use strict";
 
+let currentPage = 0;
+let totalPages = 0;
+
 async function fetchReceipts(store, page, pagesize) {
     const config = {
         method: 'GET',
@@ -10,6 +13,7 @@ async function fetchReceipts(store, page, pagesize) {
     }
     const response = await fetch('http://trawl-fki.ostfalia.de/api/data/store/' + store + '?page=' + page + '&size=' + pagesize, config);
     const receipts = await response.json();
+    totalPages = receipts.info.totalPages;
     return receipts;
 }
 document.addEventListener('DOMContentLoaded', async () => {
@@ -17,17 +21,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchParams = new URLSearchParams(window.location.search);
         const searchParam = searchParams.get('id');
         const receipts = await fetchReceipts(searchParam, 0, 50);
-        displayReceiptsAsTable(receipts);
+        updatePaginationLabel();
+        await displayReceiptsAsTable(receipts);
+
+        document.getElementById("prev").addEventListener("click", async () => {
+            if (currentPage > 0) {
+              currentPage--;
+              const searchParams = new URLSearchParams(window.location.search);
+                const searchParam = searchParams.get('id');
+              displayReceiptsAsTable(await fetchReceipts(searchParam, currentPage, 50));
+              updatePaginationLabel();
+            }
+          });
+        
+          document.getElementById("next").addEventListener("click", async () => {
+            if (currentPage < totalPages - 1) {
+              currentPage++;
+              const searchParams = new URLSearchParams(window.location.search);
+                const searchParam = searchParams.get('id');
+              displayReceiptsAsTable(await fetchReceipts(searchParam, currentPage, 50));
+              updatePaginationLabel();
+            }
+          });
+        
     });
 
 
-function displayReceiptsAsTable(receipts) {
+async function displayReceiptsAsTable(receipts) {
     var tbody = document.querySelector('#receiptTable tbody');
   
     tbody.innerHTML = '';
     const uri = window.location.origin;
     const receiptList = [];
-    let r = [];
+    const r = [];
     for(let i = 0;i<receipts.content.length;i++){
         if(r.length == 0){
             r.push(receipts.content[i]);
@@ -36,8 +62,9 @@ function displayReceiptsAsTable(receipts) {
             r.push(receipts.content[i]);
         }
         else{
-            receiptList.push(r);
+            receiptList.push(r.slice());
             r.length = 0;
+            r.push(receipts.content[i]);
         }
     }
     console.log(receiptList);
@@ -59,9 +86,16 @@ function displayReceiptsAsTable(receipts) {
         <td>${receipt[0].time}</td>
       `;
       row.classList.add('highlighted-row');
+
+      row.addEventListener('click', function () {
+        window.location.href = 'ReceiptInfo.html?id=' + receipt[0].store + '&time=' + receipt[0].time;
+      });
+
       tbody.appendChild(row);
     });
 
 }
 
-
+  function updatePaginationLabel() {
+    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+  }

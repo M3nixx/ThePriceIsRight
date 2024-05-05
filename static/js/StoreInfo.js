@@ -33,4 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.location.longitude;
     document.getElementById(ids[i++]).textContent = store.location.latitude;
     document.getElementById(ids[i++]).textContent = store.company;
+
+    const receiptbtn = document.getElementById("receiptbtn");
+    receiptbtn.addEventListener('click', function () {
+        window.location.href = 'Receipts.html?id=' + store.id;
+      });
 });
