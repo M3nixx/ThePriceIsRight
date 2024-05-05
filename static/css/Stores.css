@@ -1,62 +1,79 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    padding: 5rem 10rem;
-    background-color: #aaa;
-  }
-  
-  .imgGallery {
-    display: flex;
-  }
-  .imgGallery + .imgGallery{
-    margin-top: 10em;
-  }
-  
-  .imgGallery>.imgContainer {
-    flex-basis: 350px;
-    height: 200px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 5px;
-  }
-  
-  .imgGallery .imgContainer img {
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-    border-radius: 5px;
-  }
-  #gallery1{
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  #loadContent {
-    font-size: x-large;
-    color: white;
-    background-color: black;
-  }
+body {
+  padding: 5rem 10rem;
+  background-color: #aaa;
+}
 
-  .highlighted-row{
-    font-weight: bold;
-    font-size: 1em;
-    background-color: #FFF;
-    cursor: pointer;
-    transition: all 0.3 ease;
-  }
-  .highlighted-row:hover {
-    background-color: lightgray;
-    font-size: 1.1em;
-  }
-  #storeTable td {
-    width: 330;
-  }
-  label#PageNumber{
-    background-color: #FFF;
-  }
+.imgGallery {
+  display: flex;
+}
+
+.imgGallery+.imgGallery {
+  margin-top: 10em;
+}
+
+.imgGallery>.imgContainer {
+  flex-basis: 350px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.imgGallery .imgContainer img {
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
+#gallery1 {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#loadContent {
+  font-size: x-large;
+  color: white;
+  background-color: black;
+}
+
+.highlighted-row {
+  font-weight: bold;
+  font-size: 1em;
+  background-color: #FFF;
+  cursor: pointer;
+  transition: all 0.3 ease;
+}
+
+.highlighted-row:hover {
+  background-color: lightgray;
+  font-size: 1.1em;
+}
+
+#storeTable td {
+  width: 400;
+}
+
+label#PageNumber {
+  background-color: #FFF;
+}
+
+#productTable td {
+  width: 400;
+}
+
+#companyTable td {
+  width: 400;
+}
+
+#articleTable td {
+  width: 400;
+}
