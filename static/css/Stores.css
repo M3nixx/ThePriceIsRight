@@ -73,3 +73,7 @@ label#PageNumber {
 #companyTable td {
   width: 330;
 }
+
+#articleTable td {
+  width: 350;
+}
