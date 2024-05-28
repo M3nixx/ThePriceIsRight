@@ -23,7 +23,6 @@ async function deleteReceipt(time, store, item) {
     const response = await fetch('http://trawl-fki.ostfalia.de/api/data?time=' + time + '&store=' + store + '&item=' + item, config);
   }
 document.addEventListener('DOMContentLoaded', async () => {
-        //Ihre Lösung hier
         const searchParams = new URLSearchParams(window.location.search);
         const searchParamId = searchParams.get('id');
         const searchParamTime = searchParams.get('time');

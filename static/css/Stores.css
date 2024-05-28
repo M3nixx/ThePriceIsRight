@@ -6,6 +6,11 @@
 body {
   padding: 5rem 10rem;
   background-color: #ffbe98;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .imgGallery {
@@ -85,6 +90,9 @@ body {
 #articleTable th {
   font-size: x-large;
 }
+#articleTable {
+  justify-content: left;
+}
 
 .page{
   color:black;
@@ -107,6 +115,9 @@ body {
   cursor: not-allowed;
 }
 .back{
+  position: absolute;
+  top: 10px;
+  left: 10px;
   color:black;
   background-color: #ff7f50;
   font-weight: bold;
@@ -239,4 +250,14 @@ body {
 #infoTables #producer:hover{
   background-color: aqua;
   cursor: pointer;
+}
+h2{
+  text-align: center;
+    font-weight: bolder;
+    font-size: 300%;
+    color: #333333;
+}
+.table-Container{
+  display: flex;
+  justify-content: center;
 }

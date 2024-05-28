@@ -4,7 +4,6 @@ body{
 }
 .button-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center; /* Zentriert die Elemente horizontal */
     align-items: center; /* Zentriert die Elemente vertikal */
     height: 100vh; /* Stellt sicher, dass der Container die gesamte Höhe des Viewports einnimmt */

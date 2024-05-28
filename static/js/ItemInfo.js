@@ -22,7 +22,7 @@ async function fetchReceipts(gtin, page, pagesize) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch(`http://trawl-fki.ostfalia.de/api/data/item/${gtin}?page=${page}&size=${pagesize}`, config); // Verwenden Sie die gtin im API-Link
+    const response = await fetch(`http://trawl-fki.ostfalia.de/api/data/item/${gtin}?page=${page}&size=${pagesize}`, config);
     const receipts = await response.json();
     return receipts;
 }
@@ -35,10 +35,9 @@ async function fetchImageByUri(uri) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch('http://trawl-fki.ostfalia.de/' + uri, config);
-    const image = await response.json();
-    console.log(image);
-    return image;
+    const response = await fetch(`http://trawl-fki.ostfalia.de/${uri}`, config);
+    const item = await response.json();
+    return item;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -48,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchParam = searchParams.get('gtin');
     const ids = ["name", "description", "gtin", "product", "value", "unit", "producer", "image"];
     const store = await fetchItemByGtin(searchParam);
+    console.log(store);
     console.log(await fetchReceipts(searchParam, 0,10));
     const receipts = await fetchReceipts(searchParam, 0, 10);
     totalPages = receipts.info.totalPages;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.producer;
     const img = await fetchImageByUri(store.image);
     console.log(img);
-    document.getElementById(ids[i++]).textContent = img;
+    document.getElementById(ids[i++]).textContent = store.image;
     displayPreis(receipts);
     updatePaginationLabel();
     updateButtons();
