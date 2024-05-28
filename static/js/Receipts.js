@@ -18,10 +18,13 @@ async function fetchReceipts(store, page, pagesize) {
 }
 document.addEventListener('DOMContentLoaded', async () => {
         //Ihre Lösung hier
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
         const searchParams = new URLSearchParams(window.location.search);
         const searchParam = searchParams.get('id');
         const receipts = await fetchReceipts(searchParam, 0, 50);
         updatePaginationLabel();
+        updateButtons();
         await displayReceiptsAsTable(receipts);
 
         document.getElementById("prev").addEventListener("click", async () => {
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const searchParam = searchParams.get('id');
               displayReceiptsAsTable(await fetchReceipts(searchParam, currentPage, 50));
               updatePaginationLabel();
+              updateButtons();
             }
           });
         
@@ -41,9 +45,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const searchParam = searchParams.get('id');
               displayReceiptsAsTable(await fetchReceipts(searchParam, currentPage, 50));
               updatePaginationLabel();
+              updateButtons();
             }
           });
+          function updateButtons(){
+            if(currentPage === 0){
+                prevButton.classList.add('disabled');
+                prevButton.disabled = true;
+            } else {
+                prevButton.classList.remove('disabled');
+                prevButton.disabled = false;
+            }
         
+            if(currentPage === totalPages -1) {
+                nextButton.classList.add('disabled');
+                nextButton.disabled = true;
+            } else {
+                nextButton.classList.remove('disabled');
+                nextButton.disabled = false;
+            }
+        }
+        document.getElementById("backStoreInfo").addEventListener("click", async () => {
+          window.location.href = 'StoreInfo.html?id=' + receipts.content[0].store;
+      })
     });
 
 

@@ -2,6 +2,7 @@
 
 let currentPage = 0;
 
+
 async function fetchProducts(page, pagesize) {
     const config = {
         method: 'GET',
@@ -15,16 +16,21 @@ async function fetchProducts(page, pagesize) {
     return products;
 }
 document.addEventListener('DOMContentLoaded', async () => {
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
     console.log(await fetchProducts(0, 30));
     const products = await fetchProducts(0, 30);
     displayProductsAsTable(await fetchProducts(currentPage, 30));
     updatePaginationLabel();
+    updateButtons();
+
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
             displayProductsAsTable(await fetchProducts(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
 
@@ -33,8 +39,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentPage++;
             displayProductsAsTable(await fetchProducts(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
+    function updateButtons(){
+        if(currentPage === 0){
+            prevButton.classList.add('disabled');
+            prevButton.disabled = true;
+        } else {
+            prevButton.classList.remove('disabled');
+            prevButton.disabled = false;
+        }
+    
+        if(currentPage === products.info.totalPages -1) {
+            nextButton.classList.add('disabled');
+            nextButton.disabled = true;
+        } else {
+            nextButton.classList.remove('disabled');
+            nextButton.disabled = false;
+        }
+    }
+    document.getElementById("backHome").addEventListener("click", async () => {
+        window.location.href = 'HomePage.html';
+    })
 });
 
 function displayProductsAsTable(products) {

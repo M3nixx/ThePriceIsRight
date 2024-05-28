@@ -5,7 +5,7 @@
 
 body {
   padding: 5rem 10rem;
-  background-color: #aaa;
+  background-color: #ffbe98;
 }
 
 .imgGallery {
@@ -54,26 +54,134 @@ body {
 }
 
 .highlighted-row:hover {
-  background-color: lightgray;
+  background-color: aqua;
   font-size: 1.1em;
 }
 
 #storeTable td {
   width: 400;
 }
-
-label#PageNumber {
-  background-color: #FFF;
+#storeTable th {
+  font-size: x-large;
 }
 
 #productTable td {
   width: 400;
 }
+#productTable th {
+  font-size: x-large;
+}
 
 #companyTable td {
   width: 400;
 }
+#companyTable th {
+  font-size: x-large;
+}
 
 #articleTable td {
   width: 400;
+}
+#articleTable th {
+  font-size: x-large;
+}
+
+.page{
+  color:black;
+  background-color: #ff7f50;
+  border: 2px solid #00509e;
+  height: 30px;
+  width: 80px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.page:hover{
+  background-color: aqua;
+}
+#PageNumber{
+  background-color: #ffbe98;
+  font-weight: bold;
+}
+.page.disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.back{
+  color:black;
+  background-color: #ff7f50;
+  font-weight: bold;
+  height: 30px;
+  width: 80px;
+  border: 2px solid #b00;
+  cursor: pointer;
+}
+.back:hover{
+  background-color: rgb(253, 12, 12);
+  color:white;
+}
+.row1{
+  font-size: x-large;
+}
+.row2{
+  font-size: larger;
+}
+.row3{
+  font-size: large;
+}
+.eintrag{
+  background-color: white;
+  font-weight: bold;
+}
+#formTable{
+ background-color: #fa7342;
+}
+#infoTables{
+  background-color: #fa7342;
+}
+#infoTables td{
+  padding: 5px;
+}
+#infoTables th{
+  padding: 5px;
+}
+
+#preise th#geschaefte{
+  width: 300px;
+}
+#preise th#preis{
+  width: 60px;
+}
+#preise tr{
+  font-weight: bold;
+  font-size: 1em;
+  background-color: #FFF;
+}
+#preise th{
+  font-size: x-large;
+  background-color: #ffbe98;
+}
+
+#receiptTable th#geschaefte{
+  width: 300px;
+}
+#receiptTable #anzahl{
+  width: 40px;
+}
+#receiptTable #preis{
+  width: 70px;
+}
+#receiptTable #uhrzeit{
+  width: 230px;
+}
+#receiptbtn{
+  color:black;
+  background-color: #ff7f50;
+  border: 2px solid #00509e;
+  height: 30px;
+  width: 250px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#receiptbtn:hover{
+  background-color: aqua;
 }

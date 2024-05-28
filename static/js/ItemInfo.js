@@ -39,6 +39,8 @@ async function fetchImageByUri(uri) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
     const searchParams = new URLSearchParams(window.location.search);
     const searchParam = searchParams.get('gtin');
     const ids = ["name", "description", "gtin", "product", "value", "unit", "producer", "image"];
@@ -59,12 +61,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.image;
     displayPreis(receipts);
     updatePaginationLabel();
+    updateButtons();
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
             displayPreis(await fetchReceipts(searchParam, currentPage, 10));
             updatePaginationLabel();
+            updateButtons();
         }
     });
 
@@ -73,8 +77,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentPage++;
             displayPreis(await fetchReceipts(searchParam, currentPage, 10));
             updatePaginationLabel();
+            updateButtons();
         }
     });
+    document.getElementById("backArticles").addEventListener("click", async () => {
+        window.location.href = 'Article.html';
+    })
+    function updateButtons(){
+        if(currentPage === 0){
+            prevButton.classList.add('disabled');
+            prevButton.disabled = true;
+        } else {
+            prevButton.classList.remove('disabled');
+            prevButton.disabled = false;
+        }
+    
+        if(currentPage === receipts.info.totalPages -1) {
+            nextButton.classList.add('disabled');
+            nextButton.disabled = true;
+        } else {
+            nextButton.classList.remove('disabled');
+            nextButton.disabled = false;
+        }
+    }
 });
 
 function displayPreis(receipts){

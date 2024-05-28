@@ -1,25 +1,28 @@
 <html>
 <head>
-  <title>FetchGallery</title>
+  <title>Receipts</title>
   <meta content="">
   <link href="css/Stores.css" rel="stylesheet"></link>
   <script src="js/Receipts.js"></script>
 </head>
 <body>
+  <button id="backStoreInfo" class="back">Zurück</button>
   <table id="receiptTable">
     <thead>
       <tr>
-        <th>Geschäft</th>
-        <th>Menge</th>
-        <th>Preis</th>
-        <th>Uhrzeit</th>
+        <th id="geschaefte">Geschäft</th>
+        <th id="anzahl">Menge</th>
+        <th id="preis">Preis</th>
+        <th id="uhrzeit">Uhrzeit</th>
       </tr>
     </thead>
     <tbody>
-    <button id="prev">Prev</button>
-    <label id="PageNumber"></label>
-    <button id="next">Next</button>
+      
     </tbody>
   </table>
+  <br>
+  <button class="page" id="prev">Prev</button>
+  <label id="PageNumber"></label>
+  <button class="page" id="next">Next</button>
 </body>
 </html>

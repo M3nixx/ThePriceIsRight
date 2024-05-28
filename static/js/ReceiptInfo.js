@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchParamTime = searchParams.get('time');
         const receipts = await fetchReceipts(searchParamId, searchParamTime , 0, 50);
         displayReceiptsAsTable(receipts);
+
+        document.getElementById("backReceipts").addEventListener("click", async () => {
+            window.location.href = 'Receipts.html';
+        })
     });
 
 

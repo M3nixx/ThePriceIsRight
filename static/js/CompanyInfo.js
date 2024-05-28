@@ -32,4 +32,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = company.location.address.country;
     document.getElementById(ids[i++]).textContent = company.location.longitude;
     document.getElementById(ids[i++]).textContent = company.location.latitude;
+
+    document.getElementById("backCompanies").addEventListener("click", async () => {
+        window.location.href = 'Company.html';
+    })
 });

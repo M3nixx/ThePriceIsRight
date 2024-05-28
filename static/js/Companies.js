@@ -15,26 +15,51 @@ async function fetchCompanies(page, pagesize) {
     return companies;
 }
 document.addEventListener('DOMContentLoaded', async () => {
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
     console.log(await fetchCompanies(0, 30));
     const companies = await fetchCompanies(0, 30);
     displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
     updatePaginationLabel();
+    updateButtons();
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
             displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
 
     document.getElementById("next").addEventListener("click", async () => {
-        if (currentPage < company.info.totalPages - 1) {
+        if (currentPage < companies.info.totalPages - 1) {
             currentPage++;
             displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
+    function updateButtons(){
+        if(currentPage === 0){
+            prevButton.classList.add('disabled');
+            prevButton.disabled = true;
+        } else {
+            prevButton.classList.remove('disabled');
+            prevButton.disabled = false;
+        }
+    
+        if(currentPage === companies.info.totalPages -1) {
+            nextButton.classList.add('disabled');
+            nextButton.disabled = true;
+        } else {
+            nextButton.classList.remove('disabled');
+            nextButton.disabled = false;
+        }
+    }
+    document.getElementById("backHome").addEventListener("click", async () => {
+        window.location.href = 'HomePage.html';
+    })
 });
 
 function displayCompaniesAsTable(companies) {

@@ -1,60 +1,64 @@
 <html>
 <head>
-  <title>StoreInfo</title>
+  <title>CompanyInfo</title>
   <meta content="">
+  <link href="css/Stores.css" rel="stylesheet"></link>
   <script defer src="js/CompanyInfo.js"></script>
 </head>
 <body>
-    <table border="1">
+    <button id="backCompanies" class="back">Zurück</button>
+    <br>
+    <br>
+    <table border="1" id="infoTables">
         <tr>
-            <th>Name</th>
-            <td id="name"></td>
+            <th class="row1" id="formTable">Name</th>
+            <td id="name" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Beschreibung</th>
-            <td id="description"></td>
+            <th class="row1" id="formTable">Beschreibung</th>
+            <td id="description" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Globale Lokationsnummer</th>
-            <td id="gln"></td>
+            <th class="row1" id="formTable">Globale Lokationsnummer</th>
+            <td id="gln" class="eintrag"></td>
         </tr>
         <tr>
-            <th rowspan="10">Standort</th>
+            <th rowspan="10" class="row1" id="formTable">Standort</th>
         </tr>
         <tr>
-            <th>Längegrad</th>
-            <td id="longitude"></td>
+            <th class="row2" id="formTable">Längegrad</th>
+            <td id="longitude" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Breitegrad</th>
-            <td id="latitude"></td>
+            <th class="row2" id="formTable">Breitegrad</th>
+            <td id="latitude" class="eintrag"></td>
         </tr>
         <tr>
-            <th rowspan="7">Adresse</th>
+            <th rowspan="7" class="row2" id="formTable">Adresse</th>
         </tr>
         <tr>
-            <th>Kontakt</th>
-            <td id="contact"></td>
+            <th class="row3" id="formTable">Kontakt</th>
+            <td id="contact" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Straße</th>
-            <td id="street"></td>
+            <th class="row3" id="formTable">Straße</th>
+            <td id="street" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Stadt</th>
-            <td id="city"></td>
+            <th class="row3" id="formTable">Stadt</th>
+            <td id="city" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Bundesland</th>
-            <td id="state"></td>
+            <th class="row3" id="formTable">Bundesland</th>
+            <td id="state" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Postleitzahl</th>
-            <td id="zip"></td>
+            <th class="row3" id="formTable">Postleitzahl</th>
+            <td id="zip" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Land</th>
-            <td id="country"></td>
+            <th class="row3" id="formTable">Land</th>
+            <td id="country" class="eintrag"></td>
         </tr>
     </table>
 </body>

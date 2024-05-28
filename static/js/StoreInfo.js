@@ -38,4 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     receiptbtn.addEventListener('click', function () {
         window.location.href = 'Receipts.html?id=' + store.id;
       });
+      document.getElementById("backStores").addEventListener("click", async () => {
+        window.location.href = 'Stores.html';
+    })
 });

@@ -15,16 +15,20 @@ async function fetchArticles(page, pagesize) {
     return articles;
 }
 document.addEventListener('DOMContentLoaded', async () => {
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
     console.log(await fetchArticles(0, 30));
     const articles = await fetchArticles(0, 30);
     displayArticlesAsTable(await fetchArticles(currentPage, 30));
     updatePaginationLabel();
+    updateButtons();
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
             displayArticlesAsTable(await fetchArticles(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
 
@@ -33,8 +37,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentPage++;
             displayArticlesAsTable(await fetchArticles(currentPage, 30));
             updatePaginationLabel();
+            updateButtons();
         }
     });
+    function updateButtons(){
+        if(currentPage === 0){
+            prevButton.classList.add('disabled');
+            prevButton.disabled = true;
+        } else {
+            prevButton.classList.remove('disabled');
+            prevButton.disabled = false;
+        }
+    
+        if(currentPage === articles.info.totalPages -1) {
+            nextButton.classList.add('disabled');
+            nextButton.disabled = true;
+        } else {
+            nextButton.classList.remove('disabled');
+            nextButton.disabled = false;
+        }
+    }
+    document.getElementById("backHome").addEventListener("click", async () => {
+        window.location.href = 'HomePage.html';
+    })
 });
 
 function displayArticlesAsTable(articles) {

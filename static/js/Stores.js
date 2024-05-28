@@ -16,10 +16,13 @@ async function fetchStores(page, pagesize) {
 }
 document.addEventListener('DOMContentLoaded', async () => {
   //Ihre Lösung hier
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
   console.log(await fetchStores(0, 30));
   const stores = await fetchStores(0, 30);
   displayStoresAsTable(await fetchStores(currentPage, 30));
   updatePaginationLabel();
+  updateButtons();
   console.log(currentPage);
   /*
   const container = document.getElementById("container");
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentPage--;
       displayStoresAsTable(await fetchStores(currentPage, 30));
       updatePaginationLabel();
+      updateButtons();
     }
   });
 
@@ -48,8 +52,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentPage++;
       displayStoresAsTable(await fetchStores(currentPage, 30));
       updatePaginationLabel();
+      updateButtons();
     }
   });
+  function updateButtons(){
+    if(currentPage === 0){
+        prevButton.classList.add('disabled');
+        prevButton.disabled = true;
+    } else {
+        prevButton.classList.remove('disabled');
+        prevButton.disabled = false;
+    }
+
+    if(currentPage === stores.info.totalPages -1) {
+        nextButton.classList.add('disabled');
+        nextButton.disabled = true;
+    } else {
+        nextButton.classList.remove('disabled');
+        nextButton.disabled = false;
+    }
+}
+document.getElementById("backHome").addEventListener("click", async () => {
+  window.location.href = 'HomePage.html';
+})
 });
 
 function displayStoresAsTable(stores) {

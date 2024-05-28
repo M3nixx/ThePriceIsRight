@@ -1,44 +1,48 @@
 <html>
 <head>
-  <title>StoreInfo</title>
+  <title>ItemInfo</title>
   <meta content="">
+  <link href="css/Stores.css" rel="stylesheet"></link>
   <script defer src="js/ItemInfo.js"></script>
 </head>
 <body>
-    <table border="1">
+    <button id="backArticles" class="back">Zurück</button>
+    <br>
+    <br>
+    <table border="1" id="infoTables">
         <tr>
-            <th>Name</th>
-            <td id="name"></td>
+            <th class="row1" id="formTable">Name</th>
+            <td id="name" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Beschreibung</th>
-            <td id="description"></td>
+            <th class="row1" id="formTable">Beschreibung</th>
+            <td id="description" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Global Trade Item Number</th>
-            <td id="gtin"></td>
+            <th class="row1" id="formTable">Global Trade Item Number</th>
+            <td id="gtin" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Produkt</th>
-            <td id="product"></td>
+            <th class="row1" id="formTable">Produkt</th>
+            <td id="product" class="eintrag"></td>
         </tr>
         <tr>
-            <th rowspan="3">Menge</th>
+            <th rowspan="3" class="row1" id="formTable">Menge</th>
         </tr>
         <tr>
-            <th>Wert</th>
-            <td id="value"></td>
+            <th class="row2" id="formTable">Wert</th>
+            <td id="value" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Maßeinheit</th>
-            <td id="unit"></td>
+            <th class="row2" id="formTable">Maßeinheit</th>
+            <td id="unit" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Hersteller</th>
-            <td id="producer"></td>
+            <th class="row1" id="formTable">Hersteller</th>
+            <td id="producer" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Bild</th>
+            <th class="row1" id="formTable">Bild</th>
             <td id="image"></td>
         </tr>
     </table>
@@ -47,8 +51,8 @@
     <table id="preise">
         <thead>
             <tr>
-                <th>Geschäft</th>
-                <th>Preis</th>
+                <th id="geschaefte">Geschäft</th>
+                <th id="preis">Preis</th>
             </tr>
         </thead>
         <tbody>
@@ -56,8 +60,8 @@
         </tbody>
     </table>
     <br>
-    <button id="prev">Prev</button>
+    <button class="page" id="prev">Prev</button>
     <label id="PageNumber"></label>
-    <button id="next">Next</button>
+    <button class="page" id="next">Next</button>
 </body>
 </html>

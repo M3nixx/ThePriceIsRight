@@ -1,26 +1,30 @@
 <html>
 <head>
-  <title>StoreInfo</title>
+  <title>ProductInfo</title>
   <meta content="">
+  <link href="css/Stores.css" rel="stylesheet"></link>
   <script defer src="js/ProductInfo.js"></script>
 </head>
 <body>
-    <table border="1">
+    <button id="backProducts" class="back">Zurück</button>
+    <br>
+    <br>
+    <table border="1" id="infoTables">
         <tr>
-            <th>Name</th>
-            <td id="name"></td>
+            <th class="row1" id="formTable">Name</th>
+            <td id="name" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Beschreibung</th>
-            <td id="description"></td>
+            <th class="row1" id="formTable">Beschreibung</th>
+            <td id="description" class="eintrag"></td>
         </tr>
         <tr>
-            <th>ID</th>
-            <td id="id"></td>
+            <th class="row1" id="formTable">ID</th>
+            <td id="id" class="eintrag"></td>
         </tr>
         <tr>
-            <th>Kategorie</th>
-            <td id="extended"></td>
+            <th class="row1" id="formTable">Kategorie</th>
+            <td id="extended" class="eintrag"></td>
         </tr>
     </table>
 </body>

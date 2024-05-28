@@ -29,4 +29,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         categories += element + ", ";
     });
     document.getElementById(ids[i++]).textContent = categories.slice(0, -2);
+
+    document.getElementById("backProducts").addEventListener("click", async () => {
+        window.location.href = 'Product.html';
+    })
 });

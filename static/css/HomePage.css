@@ -1,5 +1,5 @@
 body{
-    background-color: peachpuff;
+    background-color: #ffbe98;
     font-family: monospace;
 }
 .button-container {
@@ -9,10 +9,10 @@ body{
     height: 100vh; /* Stellt sicher, dass der Container die gesamte Höhe des Viewports einnimmt */
 }
 .button{
-    background-color: white; 
+    background-color: #ff7f50; 
     font-weight: bold;
     font-family: monospace;
-    border: 2px solid aqua;
+    border: 2px solid #00509e;
     color: black;
     padding: 15px 32px;
     text-align: center;
@@ -30,4 +30,5 @@ body{
     text-align: center;
     font-weight: bolder;
     font-size: 300%;
+    color: #333333;
 }
