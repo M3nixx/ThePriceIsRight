@@ -49,7 +49,7 @@ function displayReceiptsAsTable(receipts) {
             </a>
         </td>
         <td>${receipt.number}</td>
-        <td>${receipt.price}</td>
+        <td>${(receipt.price / 100).toFixed(2)} €</td>
         <td>
             <a href="${uri}/StoreInfo.html?id=${receipt.store}">
                 ${receipt.store}

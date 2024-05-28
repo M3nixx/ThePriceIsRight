@@ -107,7 +107,7 @@ async function displayReceiptsAsTable(receipts) {
             </a>
         </td>
         <td>${receipt.length}</td>
-        <td>${sum}</td>
+        <td>${(sum / 100).toFixed(2)} €</td>
         <td>${receipt[0].time}</td>
       `;
       row.classList.add('highlighted-row');
