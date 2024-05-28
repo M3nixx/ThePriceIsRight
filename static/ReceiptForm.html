@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>ProductInfo</title>
+  <meta content="">
+  <link href="css/Stores.css" rel="stylesheet"></link>
+  <script defer src="js/ReceiptForm.js"></script>
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+    <h1>Create Receipt</h1>
+
+<form onsubmit="handleSubmit(event)">
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Zeit</th>
+                <th>Store</th>
+                <th>Item</th>
+                <th>Menge</th>
+                <th>Preis</th>
+                <th>Angebot</th>
+                <th>Ausverkauft</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Initial row for entering data -->
+            <tr>
+                <td><input type="text" name="time[]" required value="2023-12-21T16:41:28Z"></td>
+                <td><input type="text" name="store[]" value="bluewater-bs-berliner-strasse" required></td>
+                <td><input type="text" name="item[]" value="1197355083139" required></td>
+                <td><input type="number" name="number[]" required></td>
+                <td><input type="number" step="0.01" name="price[]" required></td>
+                <td><input type="checkbox" name="special[]" value="true"></td>
+                <td><input type="checkbox" name="soldOut[]" value="true"></td>
+                <td><button type="button" onclick="addRow()">Add More</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="submit">Kassenbon Hinzufügen</button>
+</form>
+
+</body>
+</html>
