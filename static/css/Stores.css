@@ -173,6 +173,9 @@ body {
 #receiptTable #uhrzeit{
   width: 230px;
 }
+#receiptTable #product{
+  width: 160px;
+}
 #receiptTable th{
   font-size: x-large;
 }

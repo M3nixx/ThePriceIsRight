@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         displayReceiptsAsTable(receipts);
 
         document.getElementById("backReceipts").addEventListener("click", async () => {
-            window.location.href = 'Receipts.html';
+            window.location.href = 'Receipts.html?id=' + receipts.content[0].store;
         })
     });
 
