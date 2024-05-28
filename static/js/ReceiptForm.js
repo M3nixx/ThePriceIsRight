@@ -5,7 +5,7 @@ function addRow() {
 
     const timeCell = row.insertCell(0);
     const timeInput = document.createElement('input');
-    timeInput.type = 'datetime-local';
+    timeInput.type = 'text';
     timeInput.name = 'time[]';
     timeInput.required = true;
     timeCell.appendChild(timeInput);
@@ -77,7 +77,7 @@ async function handleSubmit(event) {
     const receiptData = [];
     for (let i = 0; i < items.length; i++) {
         receiptData.push({
-            time: times[0].value,
+            time: times[i].value,
             store: stores[i].value,
             item: items[i].value,
             number: parseInt(numbers[i].value),
