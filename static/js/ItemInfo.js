@@ -85,6 +85,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("backArticles").addEventListener("click", async () => {
         window.location.href = 'Article.html';
     })
+    document.getElementById("producer").addEventListener("click", async () => {
+        window.location.href = 'CompanyInfo.html?gln=' + store.producer;
+    })
+    document.getElementById("product").addEventListener("click", async () => {
+        window.location.href = 'ProductInfo.html?id=' + store.product;
+    })
     function updateButtons(){
         if(currentPage === 0){
             prevButton.classList.add('disabled');

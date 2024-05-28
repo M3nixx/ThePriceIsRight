@@ -225,3 +225,18 @@ body {
   cursor: not-allowed;
   color:black;
 }
+
+#infoTables #company:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
+
+#infoTables #product:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
+
+#infoTables #producer:hover{
+  background-color: aqua;
+  cursor: pointer;
+}

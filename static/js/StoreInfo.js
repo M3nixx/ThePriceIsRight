@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchParam = searchParams.get('id');
     const ids = ["name", "description", "id", "contact", "street", "city", "state", "zip", "country", "longitude", "latitude", "company"];
     const store = await fetchStoreById(searchParam);
-
+    console.log(store);
     let i = 0;
 
     document.getElementById(ids[i++]).textContent = store.name;
@@ -40,5 +40,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       document.getElementById("backStores").addEventListener("click", async () => {
         window.location.href = 'Stores.html';
+    })
+    document.getElementById("company").addEventListener("click", async () => {
+        window.location.href = 'CompanyInfo.html?gln=' + store.company;
     })
 });
