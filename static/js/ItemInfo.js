@@ -34,9 +34,10 @@ async function fetchImageByUri(uri) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch('http://trawl-fki.ostfalia.de/api/' + uri, config);
-    const item = await response.json();
-    return item;
+    const response = await fetch('http://trawl-fki.ostfalia.de/' + uri, config);
+    const image = await response.json();
+    console.log(image);
+    return image;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.producer;
     const img = fetchImageByUri(store.image);
     console.log(img);
-    document.getElementById(ids[i++]).textContent = store.image;
+    document.getElementById(ids[i++]).textContent = img;
     displayPreis(receipts);
     updatePaginationLabel();
     updateButtons();
