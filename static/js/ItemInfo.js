@@ -29,15 +29,11 @@ async function fetchReceipts(gtin, page, pagesize) {
 
 async function fetchImageByUri(uri) {
     const config = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
-        }
+        method: 'GET'
     }
-    const response = await fetch(`http://trawl-fki.ostfalia.de/${uri}`, config);
-    const item = await response.json();
-    return item;
+    const response = await fetch(`http://trawl-fki.ostfalia.de/${uri}`);
+    const img = URL.createObjectURL(await response.blob());
+    return img;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -62,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.producer;
     const img = await fetchImageByUri(store.image);
     console.log(img);
-    document.getElementById(ids[i++]).textContent = store.image;
+    document.getElementById(ids[i++]).setAttribute('src', img);
     displayPreis(receipts);
     updatePaginationLabel();
     updateButtons();
