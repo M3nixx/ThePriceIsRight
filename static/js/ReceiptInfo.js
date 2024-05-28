@@ -13,7 +13,6 @@ async function fetchReceipts(store, time, page, pagesize) {
     return receipts;
 }
 document.addEventListener('DOMContentLoaded', async () => {
-        //Ihre Lösung hier
         const searchParams = new URLSearchParams(window.location.search);
         const searchParamId = searchParams.get('id');
         const searchParamTime = searchParams.get('time');

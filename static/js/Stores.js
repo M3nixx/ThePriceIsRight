@@ -16,7 +16,6 @@ async function fetchStores(page, pagesize) {
   return stores;
 }
 document.addEventListener('DOMContentLoaded', async () => {
-  //Ihre Lösung hier
   const prevButton = document.getElementById('prev');
   const nextButton = document.getElementById('next');
   console.log(await fetchStores(0, 30));
@@ -26,20 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   updatePaginationLabel();
   updateButtons();
   console.log(currentPage);
-  /*
-  const container = document.getElementById("container");
-  const images = await fetchImages();
-  for(let i = 0;i<images.length;i++){
-      const div = document.createElement('div');
-      div.className = "imgContainer";
-      div.innerHTML = `<img
-      src="${images[i].link}"
-      title="abc"
-      alt="">`;
-      container.appendChild(div);
-  }
-  */
-
+ 
   document.getElementById("prev").addEventListener("click", async () => {
     if (currentPage > 0) {
       currentPage--;

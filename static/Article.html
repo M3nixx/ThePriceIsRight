@@ -9,13 +9,14 @@
 </head>
 
 <body>
+    <h2>Artikel</h2>
     <button class="back" id="backHome">Zurück</button>
     <div>
         <input type="text" id="sucheInput" placeholder="Geben Sie den Namen des Artikels ein..">
         <button id="suchButton">Suchen</button>
         <button id="clearBtn" class="clearButton">Löschen</button>
     </div>
-
+    <div class="table-container">
     <table id="articleTable">
         <thead>
             <tr>
@@ -26,9 +27,12 @@
         <tbody>
         </tbody>
     </table>
+    </div>
     <br>
+    <div>
     <button class="page" id="prev">Prev</button>
     <label id="PageNumber"></label>
     <button class="page" id="next">Next</button>
+</div>
 </body>
 </html>
