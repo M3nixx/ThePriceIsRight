@@ -191,3 +191,52 @@ body {
 #receiptbtn:hover{
   background-color: aqua;
 }
+#suchButton{
+  color:black;
+  background-color: #ff7f50;
+  border: 2px solid #00509e;
+  height: 30px;
+  width: 80px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#suchButton:hover{
+  background-color: aqua;
+}
+#sucheInput{
+  width: 300px;
+}
+
+.clearButton{
+  color:black;
+  background-color: #ff7f50;
+  font-weight: bold;
+  height: 30px;
+  width: 80px;
+  border: 2px solid #b00;
+  cursor: pointer;
+}
+.clearButton:hover{
+  background-color: rgb(253, 12, 12);
+  color:white;
+}
+.clearButton.disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+  color:black;
+}
+
+#infoTables #company:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
+
+#infoTables #product:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
+
+#infoTables #producer:hover{
+  background-color: aqua;
+  cursor: pointer;
+}
