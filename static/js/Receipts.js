@@ -99,13 +99,6 @@ async function displayReceiptsAsTable(receipts) {
       receipt.forEach(function(product){sum += parseInt(product.price)});
       var row = document.createElement('tr');
       row.innerHTML = `
-       <td>
-            <a href="${uri}/StoreInfo.html?id=${receipt[0].store}">
-                <div style="height:100%;width:100%">
-                    ${receipt[0].store}
-                </div>
-            </a>
-        </td>
         <td>${receipt.length}</td>
         <td>${(sum / 100).toFixed(2)} €</td>
         <td>${receipt[0].time}</td>

@@ -56,6 +56,8 @@ function displayReceiptsAsTable(receipts) {
             </a>
         </td>
         <td>${receipt.time}</td>
+        <td>${receipt.special ? 'Ja' : 'Nein'}</td>
+        <td>${receipt.soldOut ? 'Ja' : 'Nein'}</td>
         <td><button class="button" onclick="deleteReceipt('${receipt.time}', '${receipt.store}', '${receipt.item}')">Löschen</button></td>
       `;
       row.classList.add('highlighted-row');

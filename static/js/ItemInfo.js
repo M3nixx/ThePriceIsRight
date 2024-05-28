@@ -109,14 +109,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function displayPreis(receipts){
+    const uri = window.location.origin;
     var tbody = document.querySelector('#preise tbody');
     tbody.innerHTML = '';
     receipts.content.forEach(function(receipt) {
         var preisEuro = (receipt.price / 100).toFixed(2);
         var row = document.createElement('tr');
         row.innerHTML = `
-            <td>${receipt.store}</td>
+            <td>
+            <a href="${uri}/StoreInfo.html?id=${receipt.store}">
+                ${receipt.store}
+            </a>
+            </td>
             <td>${preisEuro} €</td>
+            <td>${receipt.special ? 'Ja' : 'Nein'}</td>
         `;
         tbody.appendChild(row);
     });
