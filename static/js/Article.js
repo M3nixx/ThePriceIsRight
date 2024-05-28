@@ -3,7 +3,7 @@
 let currentPage = 0;
 let totalPages = 0;
 let suchQuery = '';
-let suchFeld = '';
+let suchFeld = 'name';
 
 async function fetchArticles(page, pagesize) {
     const config = {
@@ -26,7 +26,7 @@ async function searchArticles(page, pagesize, suchFeld, suchQuery) {
             'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
         }
     }
-    const response = await fetch(`http://trawl-fki.ostfalia.de/api/item/find?${searchField}=${encodeURIComponent(searchQuery)}&page=${page}&size=${pagesize}`, config);
+    const response = await fetch(`http://trawl-fki.ostfalia.de/api/item/find?${suchFeld}=${encodeURIComponent('%' + suchQuery + '%')}&page=${page}&size=${pagesize}`, config);
     const articles = await response.json();
     return articles
 }
@@ -34,29 +34,32 @@ async function searchArticles(page, pagesize, suchFeld, suchQuery) {
 document.addEventListener('DOMContentLoaded', async () => {
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
-    const kriterium = document.getElementById('suche');
-    const searchButton = document.getElementById('suchButton');
+    const clearButton = document.getElementById('clearBtn');
     const searchInput = document.getElementById('sucheInput');
+    clearButton.classList.add('disabled');
+    clearButton.disabled = true;
     console.log(await fetchArticles(0, 30));
-    const articles = await fetchArticles(0, 30);
-    totalPages = articles.info.totalPages;
-    displayArticlesAsTable(await fetchArticles(currentPage, 30));
+    const initialArticles = await fetchArticles(0, 30);
+    totalPages = initialArticles.info.totalPages;
+    displayArticlesAsTable(initialArticles.content);
     updatePaginationLabel();
     updateButtons();
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
             currentPage--;
-            displayArticlesAsTable(await fetchArticles(currentPage, 30));
+            const articles = suchQuery ? await searchArticles(currentPage, 30, suchFeld, suchQuery) : await fetchArticles(currentPage, 30);
+            displayArticlesAsTable(articles.content);
             updatePaginationLabel();
             updateButtons();
         }
     });
 
     document.getElementById("next").addEventListener("click", async () => {
-        if (currentPage < articles.info.totalPages - 1) {
+        if (currentPage < initialArticles.info.totalPages - 1) {
             currentPage++;
-            displayArticlesAsTable(await fetchArticles(currentPage, 30));
+            const articles = suchQuery ? await searchArticles(currentPage, 30, suchFeld, suchQuery) : await fetchArticles(currentPage, 30);
+            displayArticlesAsTable(articles.content);
             updatePaginationLabel();
             updateButtons();
         }
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             prevButton.disabled = false;
         }
     
-        if(currentPage === articles.info.totalPages -1) {
+        if(currentPage === totalPages -1) {
             nextButton.classList.add('disabled');
             nextButton.disabled = true;
         } else {
@@ -81,24 +84,38 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById("suchButton").addEventListener('click', async () => {
         suchQuery = searchInput.value;
-        suchFeld = kriterium.value;
         currentPage = 0;
         const articles = await searchArticles(currentPage, 30, suchFeld, suchQuery);
         totalPages = articles.info.totalPages;
-        displayArticlesAsTable(await searchArticles(currentPage, 30, suchFeld, suchQuery));
-        updateButtons();
+        displayArticlesAsTable(articles.content);
         updatePaginationLabel();
+        updateButtons();
+        clearButton.classList.remove('disabled');
+        clearButton.disabled = false;
     })
 
     document.getElementById("backHome").addEventListener("click", async () => {
         window.location.href = 'HomePage.html';
+    })
+
+    document.getElementById("clearBtn").addEventListener("click", async () => {
+        searchInput.value = '';
+        suchQuery = '';
+        currentPage = 0;
+        const articles = await fetchArticles(currentPage, 30);
+        totalPages = articles.info.totalPages;
+        displayArticlesAsTable(articles.content);
+        updateButtons();
+        updatePaginationLabel();
+        clearButton.classList.add('disabled');
+        clearButton.disabled = true;
     })
 });
 
 function displayArticlesAsTable(articles) {
     var tbody = document.querySelector('#articleTable tbody');
     tbody.innerHTML = '';
-    articles.content.forEach(function (article) {
+    articles.forEach(function (article) {
         var row = document.createElement('tr');
         row.innerHTML = `
              <td>${article.name}</td>
