@@ -1,6 +1,9 @@
 "use strict";
 
 let currentPage = 0;
+let totalPages = 0;
+let suchQuery = '';
+let suchFeld = '';
 
 async function fetchArticles(page, pagesize) {
     const config = {
@@ -14,11 +17,29 @@ async function fetchArticles(page, pagesize) {
     const articles = await response.json();
     return articles;
 }
+
+async function searchArticles(page, pagesize, suchFeld, suchQuery) {
+    const config = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
+        }
+    }
+    const response = await fetch(`http://trawl-fki.ostfalia.de/api/item/find?${searchField}=${encodeURIComponent(searchQuery)}&page=${page}&size=${pagesize}`, config);
+    const articles = await response.json();
+    return articles
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
+    const kriterium = document.getElementById('suche');
+    const searchButton = document.getElementById('suchButton');
+    const searchInput = document.getElementById('sucheInput');
     console.log(await fetchArticles(0, 30));
     const articles = await fetchArticles(0, 30);
+    totalPages = articles.info.totalPages;
     displayArticlesAsTable(await fetchArticles(currentPage, 30));
     updatePaginationLabel();
     updateButtons();
@@ -57,6 +78,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             nextButton.disabled = false;
         }
     }
+
+    document.getElementById("suchButton").addEventListener('click', async () => {
+        suchQuery = searchInput.value;
+        suchFeld = kriterium.value;
+        currentPage = 0;
+        const articles = await searchArticles(currentPage, 30, suchFeld, suchQuery)
+    })
+
     document.getElementById("backHome").addEventListener("click", async () => {
         window.location.href = 'HomePage.html';
     })
@@ -80,5 +109,5 @@ function displayArticlesAsTable(articles) {
     });
 }
 function updatePaginationLabel() {
-    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+    document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }

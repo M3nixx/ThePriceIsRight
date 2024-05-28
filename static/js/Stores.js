@@ -1,6 +1,7 @@
 "use strict";
 
 let currentPage = 0;
+let totalPages = 0;
 
 async function fetchStores(page, pagesize) {
   const config = {
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const nextButton = document.getElementById('next');
   console.log(await fetchStores(0, 30));
   const stores = await fetchStores(0, 30);
+  totalPages = stores.info.totalPages;
   displayStoresAsTable(await fetchStores(currentPage, 30));
   updatePaginationLabel();
   updateButtons();
@@ -98,5 +100,5 @@ function displayStoresAsTable(stores) {
 
 }
 function updatePaginationLabel() {
-  document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+  document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchParams = new URLSearchParams(window.location.search);
         const searchParam = searchParams.get('id');
         const receipts = await fetchReceipts(searchParam, 0, 50);
+        totalPages = receipts.info.totalPages;
         updatePaginationLabel();
         updateButtons();
         await displayReceiptsAsTable(receipts);
@@ -121,5 +122,5 @@ async function displayReceiptsAsTable(receipts) {
 }
 
   function updatePaginationLabel() {
-    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+    document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
   }

@@ -10,15 +10,23 @@
 
 <body>
     <button class="back" id="backHome">Zurück</button>
+    <div>
+        <select id="suche">
+            <option value="name">Name</option>
+            <option value="gtin">GTIN</option>
+        </select>
+        <input type="text" id="sucheInput" placeholder="Suche..">
+        <button id="suchButton">Suchen</button>
+    </div>
+
     <table id="articleTable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>GTIN</th>
+                <th id="nameHeader">Name</th>
+                <th id="gtinHeader">GTIN</th>
             </tr>
         </thead>
         <tbody>
-
         </tbody>
     </table>
     <br>

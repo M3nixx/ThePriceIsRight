@@ -1,6 +1,7 @@
 "use strict";
 
 let currentPage = 0;
+let totalPages = 0;
 
 async function fetchCompanies(page, pagesize) {
     const config = {
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nextButton = document.getElementById('next');
     console.log(await fetchCompanies(0, 30));
     const companies = await fetchCompanies(0, 30);
+    totalPages = companies.info.totalPages;
     displayCompaniesAsTable(await fetchCompanies(currentPage, 30));
     updatePaginationLabel();
     updateButtons();
@@ -80,5 +82,5 @@ function displayCompaniesAsTable(companies) {
     });
 }
 function updatePaginationLabel() {
-    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+    document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }

@@ -1,6 +1,7 @@
 "use strict";
 
 let currentPage = 0;
+let totalPages = 0;
 async function fetchItemByGtin(gtin) {
     const config = {
         method: 'GET',
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const store = await fetchItemByGtin(searchParam);
     console.log(await fetchReceipts(searchParam, 0,10));
     const receipts = await fetchReceipts(searchParam, 0, 10);
+    totalPages = receipts.info.totalPages;
     let i = 0;
 
     document.getElementById(ids[i++]).textContent = store.name;
@@ -115,5 +117,5 @@ function displayPreis(receipts){
     });
 }
 function updatePaginationLabel() {
-    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+    document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 let currentPage = 0;
-
+let totalPages = 0;
 
 async function fetchProducts(page, pagesize) {
     const config = {
@@ -15,15 +15,17 @@ async function fetchProducts(page, pagesize) {
     const products = await response.json();
     return products;
 }
+
 document.addEventListener('DOMContentLoaded', async () => {
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     console.log(await fetchProducts(0, 30));
     const products = await fetchProducts(0, 30);
+    totalPages = products.info.totalPages;
     displayProductsAsTable(await fetchProducts(currentPage, 30));
     updatePaginationLabel();
     updateButtons();
-
+   
 
     document.getElementById("prev").addEventListener("click", async () => {
         if (currentPage > 0) {
@@ -82,5 +84,5 @@ function displayProductsAsTable(products) {
     });
 }
 function updatePaginationLabel() {
-    document.querySelector('label').textContent = `Seite ${currentPage + 1}`;
+    document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }
