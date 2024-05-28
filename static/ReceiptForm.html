@@ -32,7 +32,7 @@
                 <td><input type="text" name="store[]" value="bluewater-bs-berliner-strasse" required></td>
                 <td><input type="text" name="item[]" value="1197355083139" required></td>
                 <td><input type="number" name="number[]" required></td>
-                <td><input type="number" step="0.01" name="price[]" required></td>
+                <td><input type="number" step="1" name="price[]" required></td>
                 <td><input type="checkbox" name="special[]" value="true"></td>
                 <td><input type="checkbox" name="soldOut[]" value="true"></td>
                 <td><button type="button" class="addMore" onclick="addRow()">Add More</button></td>
@@ -42,6 +42,7 @@
     <br>
     <button type="submit" class="submitButton">Kassenbon Hinzufügen</button>
 </form>
+<div id="response"></div>
 
 </body>
 </html>

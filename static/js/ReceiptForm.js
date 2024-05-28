@@ -1,3 +1,17 @@
+async function postReceipt(receipt){
+    const config = {
+        method: 'POST',
+        headers: {
+            'Content-Length': receipt,
+            'Content-Type': 'application/json',
+            'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
+        },
+        body: JSON.stringify(receipt)
+    }
+    const response = await fetch('http://trawl-fki.ostfalia.de/api/data', config);
+    return response;
+}
+
 function addRow() {
     const table = document.getElementById('data-table').getElementsByTagName('tbody')[0];
     const rowCount = table.rows.length;
@@ -34,7 +48,7 @@ function addRow() {
     const priceCell = row.insertCell(4);
     const priceInput = document.createElement('input');
     priceInput.type = 'number';
-    priceInput.step = '0.01';
+    priceInput.step = '1';
     priceInput.name = 'price[]';
     priceInput.required = true;
     priceCell.appendChild(priceInput);
@@ -65,7 +79,7 @@ function addRow() {
 }
 async function handleSubmit(event) {
     event.preventDefault();
-    
+    const responsefield = document.getElementById('response');
     const form = event.target;
     const times = form.querySelectorAll('input[name="time[]"]');
     const stores = form.querySelectorAll('input[name="store[]"]');
@@ -86,21 +100,18 @@ async function handleSubmit(event) {
             soldOut: soldOuts[i].checked
         });
     }
-    console.log(JSON.stringify(receiptData[0]));
 
     for (let i = 0; i < receiptData.length; i++) {
-        const config = {
-            method: 'POST',
-            headers: {
-                'Content-Length': receiptData[i],
-                'Content-Type': 'application/json',
-                'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
-            },
-            body: JSON.stringify(receiptData[i])
-        }
-        const response = await fetch('http://trawl-fki.ostfalia.de/api/data', config);
-        //const message = response.json();
-        //console.log(response);
+        const response = await postReceipt(receiptData[i]);
+        /*
+        try {
+            const response = await postReceipt(receiptData[i]);
+            const responseJson = await response.json();
+            responsefield.innerHTML += '<br>' + (i + 1) + ': ' + responseJson.code + ': ' + responseJson.message;
+        } catch (error) {
+            console.error('Error posting receipt:', error);
+            responsefield.innerHTML += '<br>' + (i + 1) + ': Error posting receipt';
+        }*/
     }       
 }
 document.getElementById("backHome").addEventListener("click", async () => {
