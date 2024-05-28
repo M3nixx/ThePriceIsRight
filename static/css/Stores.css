@@ -173,6 +173,9 @@ body {
 #receiptTable #uhrzeit{
   width: 230px;
 }
+#receiptTable th{
+  font-size: x-large;
+}
 #receiptbtn{
   color:black;
   background-color: #ff7f50;
