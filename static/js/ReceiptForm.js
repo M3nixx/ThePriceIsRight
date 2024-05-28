@@ -14,7 +14,6 @@ function addRow() {
     const storeInput = document.createElement('input');
     storeInput.type = 'text';
     storeInput.name = 'store[]';
-    storeInput.value = 'lidl-wf-neuer-weg';  // Default value
     storeInput.required = true;
     storeCell.appendChild(storeInput);
 
@@ -58,6 +57,7 @@ function addRow() {
     const removeButton = document.createElement('button');
     removeButton.type = 'button';
     removeButton.innerText = 'Remove';
+    removeButton.classList.add('remove-button');
     removeButton.onclick = function() {
         table.deleteRow(row.rowIndex - 1);
     };
@@ -103,3 +103,6 @@ async function handleSubmit(event) {
         //console.log(response);
     }       
 }
+document.getElementById("backHome").addEventListener("click", async () => {
+    window.location.href = 'HomePage.html';
+})

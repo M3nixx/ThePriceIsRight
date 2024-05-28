@@ -5,31 +5,21 @@
   <link href="css/Stores.css" rel="stylesheet"></link>
   <script defer src="js/ReceiptForm.js"></script>
   <style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    table, th, td {
-        border: 1px solid black;
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
+   
 </style>
 </head>
 <body>
-    <h1>Create Receipt</h1>
-
+    <h2>Kassenbon erstellen</h2>
+    <button class="back" id="backHome">Zurück</button>
 <form onsubmit="handleSubmit(event)">
     <table id="data-table">
         <thead>
             <tr>
                 <th>Zeit</th>
-                <th>Store</th>
-                <th>Item</th>
-                <th>Menge</th>
-                <th>Preis</th>
+                <th class="store">Store</th>
+                <th class="item">Item</th>
+                <th class="menge">Menge</th>
+                <th class="preis">Preis</th>
                 <th>Angebot</th>
                 <th>Ausverkauft</th>
                 <th>Action</th>
@@ -45,12 +35,12 @@
                 <td><input type="number" step="0.01" name="price[]" required></td>
                 <td><input type="checkbox" name="special[]" value="true"></td>
                 <td><input type="checkbox" name="soldOut[]" value="true"></td>
-                <td><button type="button" onclick="addRow()">Add More</button></td>
+                <td><button type="button" class="addMore" onclick="addRow()">Add More</button></td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button type="submit">Kassenbon Hinzufügen</button>
+    <button type="submit" class="submitButton">Kassenbon Hinzufügen</button>
 </form>
 
 </body>

@@ -268,3 +268,80 @@ h2{
   display: block;
   margin: 0 auto;
 }
+#data-table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+#data-table th{
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+#data-table td{
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+#data-table .store{
+  width: 300px;
+}
+#data-table input[name="store[]"]{
+  width: 260px;
+}
+#data-table .item{
+  width: 140px;
+}
+#data-table input[name="item[]"]{
+  width: 120px;
+}
+#data-table .menge{
+  width: 100px;
+}
+#data-table input[name="number[]"]{
+  width: 60px;
+}
+#data-table .preis{
+  width: 100px;
+}
+#data-table input[name="price[]"]{
+  width: 80px;
+}
+
+button.addMore{
+  color:black;
+  background-color: #ff7f50;
+  border: 2px solid #00509e;
+  height: 25px;
+  width: 80px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button.addMore:hover{
+  background-color: aqua;
+}
+button.remove-button{
+  color:black;
+  background-color: #ff7f50;
+  font-weight: bold;
+  height: 30px;
+  width: 80px;
+  border: 2px solid #b00;
+  cursor: pointer;
+}
+button.remove-button:hover{
+  background-color: rgb(253, 12, 12);
+  color:white;
+}
+
+button.submitButton{
+  color:black;
+  background-color: #ff7f50;
+  border: 2px solid #00509e;
+  height: 45px;
+  width: 120px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button.submitButton:hover{
+  background-color: aqua;
+}
