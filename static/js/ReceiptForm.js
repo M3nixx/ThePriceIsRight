@@ -92,7 +92,8 @@ async function handleSubmit(event) {
         const config = {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
+                'Content-Length': receiptData[i],
+                'Content-Type': 'application/json',
                 'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
             },
             body: JSON.stringify(receiptData[i])
