@@ -83,7 +83,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         suchQuery = searchInput.value;
         suchFeld = kriterium.value;
         currentPage = 0;
-        const articles = await searchArticles(currentPage, 30, suchFeld, suchQuery)
+        const articles = await searchArticles(currentPage, 30, suchFeld, suchQuery);
+        totalPages = articles.info.totalPages;
+        displayArticlesAsTable(await searchArticles(currentPage, 30, suchFeld, suchQuery));
+        updateButtons();
+        updatePaginationLabel();
     })
 
     document.getElementById("backHome").addEventListener("click", async () => {
