@@ -12,6 +12,16 @@ async function fetchReceipts(store, time, page, pagesize) {
     const receipts = await response.json();
     return receipts;
 }
+async function deleteReceipt(time, store, item) {
+    const config = {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'X-API-Key': 'afdb55d3-aa85-42c9-a2fc-fa3e378b04b5'
+        }
+    }
+    const response = await fetch('http://trawl-fki.ostfalia.de/api/data?time=' + time + '&store=' + store + '&item=' + item, config);
+  }
 document.addEventListener('DOMContentLoaded', async () => {
         //Ihre Lösung hier
         const searchParams = new URLSearchParams(window.location.search);
@@ -47,6 +57,7 @@ function displayReceiptsAsTable(receipts) {
             </a>
         </td>
         <td>${receipt.time}</td>
+        <td><button class="button" onclick="deleteReceipt('${receipt.time}', '${receipt.store}', '${receipt.item}')">Löschen</button></td>
       `;
       row.classList.add('highlighted-row');
       tbody.appendChild(row);

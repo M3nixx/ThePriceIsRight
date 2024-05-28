@@ -16,6 +16,7 @@ async function fetchReceipts(store, page, pagesize) {
     totalPages = receipts.info.totalPages;
     return receipts;
 }
+
 document.addEventListener('DOMContentLoaded', async () => {
         //Ihre Lösung hier
         const prevButton = document.getElementById('prev');

@@ -26,6 +26,7 @@ async function fetchReceipts(gtin, page, pagesize) {
     const receipts = await response.json();
     return receipts;
 }
+
 async function fetchImageByUri(uri) {
     const config = {
         method: 'GET',
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById(ids[i++]).textContent = store.quantity.value;
     document.getElementById(ids[i++]).textContent = store.quantity.unit;
     document.getElementById(ids[i++]).textContent = store.producer;
-    const img = fetchImageByUri(store.image);
+    const img = await fetchImageByUri(store.image);
     console.log(img);
     document.getElementById(ids[i++]).textContent = img;
     displayPreis(receipts);
