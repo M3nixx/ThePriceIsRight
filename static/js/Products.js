@@ -64,6 +64,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateButtons();
         }
     });
+     // Event-Listener für den "Los"-Button registrieren
+     const goToPageBtn = document.getElementById('goToPageBtn');
+     goToPageBtn.addEventListener("click", async () => {
+         const pageNumber = parseInt(pageInput.value, 10);
+         if (pageNumber >= 1 && pageNumber <= totalPages) {
+             currentPage = pageNumber - 1;
+             const products = suchQuery ? await searchProducts(currentPage, 30, suchFeld, suchQuery) : await fetchProducts(currentPage, 30);
+             displayProductsAsTable(products.content);
+             updatePaginationLabel();
+             updateButtons();
+         } else {
+             alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
+         }
+     });
     function updateButtons(){
         if(currentPage === 0){
             prevButton.classList.add('disabled');
