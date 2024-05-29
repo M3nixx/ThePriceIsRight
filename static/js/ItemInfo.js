@@ -123,6 +123,7 @@ function displayPreis(receipts){
             </td>
             <td>${preisEuro} €</td>
             <td>${receipt.special ? 'Ja' : 'Nein'}</td>
+            <td>${receipt.time}</td>
         `;
         tbody.appendChild(row);
     });
