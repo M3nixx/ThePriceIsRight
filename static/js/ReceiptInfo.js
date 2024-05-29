@@ -21,6 +21,7 @@ async function deleteReceipt(time, store, item) {
         }
     }
     const response = await fetch('http://trawl-fki.ostfalia.de/api/data?time=' + time + '&store=' + store + '&item=' + item, config);
+    location.reload(true);
   }
 document.addEventListener('DOMContentLoaded', async () => {
         const searchParams = new URLSearchParams(window.location.search);
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         displayReceiptsAsTable(receipts);
 
         document.getElementById("backReceipts").addEventListener("click", async () => {
-            window.location.href = 'Receipts.html?id=' + receipts.content[0].store;
+            window.location.href = 'Receipts.html?id=' + searchParamId;
         })
     });
 

@@ -43,6 +43,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       updateButtons();
     }
   });
+  // Event-Listener für den "Los"-Button registrieren
+  const goToPageBtn = document.getElementById('goToPageBtn');
+  goToPageBtn.addEventListener("click", async () => {
+      const pageNumber = parseInt(pageInput.value, 10);
+      if (pageNumber >= 1 && pageNumber <= totalPages) {
+          currentPage = pageNumber - 1;
+          displayStoresAsTable(await fetchStores(currentPage, 30));
+          updatePaginationLabel();
+          updateButtons();
+      } else {
+          alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
+      }
+  });
   function updateButtons(){
     if(currentPage === 0){
         prevButton.classList.add('disabled');
