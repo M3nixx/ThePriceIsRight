@@ -64,6 +64,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateButtons();
         }
     });
+    // Event-Listener für den "Los"-Button registrieren
+    const goToPageBtn = document.getElementById('goToPageBtn');
+    goToPageBtn.addEventListener("click", async () => {
+        const pageNumber = parseInt(pageInput.value, 10);
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            currentPage = pageNumber - 1;
+            const articles = suchQuery ? await searchArticles(currentPage, 30, suchFeld, suchQuery) : await fetchArticles(currentPage, 30);
+            displayArticlesAsTable(articles.content);
+            updatePaginationLabel();
+            updateButtons();
+        } else {
+            alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
+        }
+    });
     function updateButtons(){
         if(currentPage === 0){
             prevButton.classList.add('disabled');
@@ -132,24 +146,4 @@ function displayArticlesAsTable(articles) {
 function updatePaginationLabel() {
     document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-    // Andere Initialisierungen und Event-Listener hier
-
-    // Event-Listener für den "Los"-Button registrieren
-    const goToPageBtn = document.getElementById('goToPageBtn');
-    goToPageBtn.addEventListener("click", async () => {
-        const pageNumber = parseInt(pageInput.value, 10);
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
-            currentPage = pageNumber - 1;
-            const articles = suchQuery ? await searchArticles(currentPage, 30, suchFeld, suchQuery) : await fetchArticles(currentPage, 30);
-            displayArticlesAsTable(articles.content);
-            updatePaginationLabel();
-        } else {
-            alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
-        }
-    });
-});
-
-
 
