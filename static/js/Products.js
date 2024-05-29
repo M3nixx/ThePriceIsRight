@@ -132,3 +132,21 @@ function displayProductsAsTable(products) {
 function updatePaginationLabel() {
     document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Andere Initialisierungen und Event-Listener hier
+
+    // Event-Listener für den "Los"-Button registrieren
+    const goToPageBtn = document.getElementById('goToPageBtn');
+    goToPageBtn.addEventListener("click", async () => {
+        const pageNumber = parseInt(pageInput.value, 10);
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            currentPage = pageNumber - 1;
+            const product = suchQuery ? await searchProducts(currentPage, 30, suchFeld, suchQuery) : await fetchProducts(currentPage, 30);
+            displayProductsAsTable(product.content)
+            updatePaginationLabel();
+        } else {
+            alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
+        }
+    });
+});

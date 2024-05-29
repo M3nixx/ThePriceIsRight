@@ -80,6 +80,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateButtons();
         }
     });
+
+    document.getElementById("goToPageBtn").addEventListener("click", async () => {
+        const pageNumber = parseInt(document.getElementById("pageInput").value, 10);
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            currentPage = pageNumber - 1;
+            displayPreis(await fetchReceipts(searchParam, currentPage, 10));
+            updatePaginationLabel();
+            updateButtons();
+        } else {
+            alert(`Bitte geben Sie eine Zahl zwischen 1 und ${totalPages} ein.`);
+        }
+    });
+
     document.getElementById("backArticles").addEventListener("click", async () => {
         window.location.href = 'Article.html';
     })
@@ -131,3 +144,5 @@ function displayPreis(receipts){
 function updatePaginationLabel() {
     document.querySelector('label').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
 }
+
+
